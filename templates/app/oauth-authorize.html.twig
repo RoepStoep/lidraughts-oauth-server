@@ -1,39 +1,137 @@
-{% extends '@layout/default.html.twig' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Authorize {{ applicationName }}</title>
+    <link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700|Roboto:300' rel='stylesheet'>
+    <style>
+      * { box-sizing:border-box; }
 
-{% block title %}Authorize{% endblock %}
+      body {
+        line-height: 1.6em;
+        font: 16px 'Noto Sans','Lucida Grande','Lucida Sans Unicode',Geneva,Verdana,Sans-Serif;
+        color: #707070;
+        background: #eee;
+        background-image: linear-gradient(to bottom,#d7d7d7 0%,#eeeeee 116px);
+        background-repeat: no-repeat;
+      }
 
-{% block content %}
-    <p>
-        Are you sure you want to give {{ applicationName }} access to your account?
-    </p>
+      hgroup {
+        text-align:center;
+        margin-top: 3em;
+      }
 
-    {% if scopes %}
-        <p>
-            {{ applicationName }} will be able to:
-        </p>
+      hgroup .logo {
+        width: 200px;
+        height: 200px;
+      }
 
-        <ul>
-            {% for scope in scopes %}
-                <li>
-                    {% if scope == 'read' %}
-                        Read stuff.
-                    {% elseif scope == 'write' %}
-                        Write stuff.
-                    {% else %}
-                        {% trans %}The scope {{ scope }} has not been implemented!{% endtrans %}
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+      form {
+        width: 500px;
+        margin: 4em auto 2em auto;
+        padding: 3em 2em 2em 2em;
+        background: #fafafa;
+        border: 1px solid #ebebeb;
+        border-radius: 3px;
+        box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+      }
 
-    <form method="post">
-        <button type="submit" name="authorize">
-            Yes
-        </button>
+      .desc {
+        margin-bottom: 3em;
+      }
 
-        <button type="submit">
-            No
-        </button>
+      .redirect {
+        text-align: center;
+        margin-top: 1em;
+      }
+
+      /* Button */
+
+      .button {
+        position: relative;
+        display: inline-block;
+        padding: 12px 24px;
+        margin: .3em 0 1em 0;
+        width: 100%;
+        vertical-align: middle;
+        color: #fff;
+        font-size: 16px;
+        line-height: 20px;
+        -webkit-font-smoothing: antialiased;
+        text-align: center;
+        letter-spacing: 1px;
+        background: transparent;
+        border: 0;
+        border-bottom: 2px solid #3160B6;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        font-weight: bold;
+      }
+      .button:focus { outline: 0; }
+
+
+      /* Button modifiers */
+
+      .buttonBlue {
+        background: #4a89dc;
+        text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
+      }
+
+      .buttonBlue:hover { background: #357bd8; }
+
+      footer {
+        text-align: center;
+        width: 500px;
+        margin: 2em auto;
+        padding: 2em;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      footer p {
+        color: #888;
+        font-size: 13px;
+        letter-spacing: .4px;
+      }
+
+      footer a {
+        color: #4a89dc;
+        text-decoration: none;
+        transition: all .2s ease;
+      }
+
+      footer a:hover {
+        color: #666;
+        text-decoration: underline;
+      }
+
+      footer img {
+        width: 80px;
+        transition: all .2s ease;
+      }
+
+      footer img:hover { opacity: .83; }
+
+      footer img:focus , footer a:focus { outline: none; }
+    </style>
+  </head>
+  <body>
+    <hgroup>
+      <img src="https://lichess1.org/assets/favicon.svg" alt="lichess.org" class="logo" />
+      <h1>Authorize {{ applicationName }}</h1>
+    </hgroup>
+    <form action="{{ redirectUri }}" method="POST">
+      <div class="desc">
+        {{ applicationName }} wants to access your <strong>thibault</strong> account
+      </div>
+      <button type="button" class="button buttonBlue">Authorize {{ applicationName }}</button>
+      <div class="redirect">
+        Authorizing will redirect to<br />
+        <strong>{{ redirectUri }}</strong>
+      </div>
     </form>
-{% endblock %}
+    <footer>
+      {{ applicationName }} is <strong>not</strong> owned or operated by <a href="https://lichess.org">lichess.org</a>
+    </footer>
+  </body>
+</html>
