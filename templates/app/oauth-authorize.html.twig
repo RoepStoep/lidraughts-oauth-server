@@ -120,11 +120,11 @@
       <img src="https://lichess1.org/assets/favicon.svg" alt="lichess.org" class="logo" />
       <h1>Authorize {{ applicationName }}</h1>
     </hgroup>
-    <form action="{{ redirectUri }}" method="POST">
+    <form method="POST">
       <div class="desc">
         {{ applicationName }} wants to access your <strong>thibault</strong> account
       </div>
-      <button type="submit" class="button buttonBlue">Authorize {{ applicationName }}</button>
+      <button type="submit" name="authorize" class="button buttonBlue">Authorize {{ applicationName }}</button>
       <div class="redirect">
         Authorizing will redirect to<br />
         <strong>{{ redirectUri }}</strong>
