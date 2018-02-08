@@ -136,6 +136,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
 
         $parameters = [
             'applicationName' => $client->getName(),
+            'redirectUri' => $client->getRedirectUri()[0],
             'client' => $client,
             'scopes' => $this->getValidRequestedScopes($client, $authorizationRequest->getScopes()),
         ];
