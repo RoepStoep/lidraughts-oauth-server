@@ -57,11 +57,11 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
     private $template;
 
     /**
-     * The user id of the currently authenticated user.
+     * The user data of the currently authenticated user.
      *
-     * @var string|null
+     * @var array
      */
-    private $userId;
+    private $userData;
 
     /**
      * Initializes a new instance of this class.
@@ -84,6 +84,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
         $this->checkAuthenticationUrl = $checkAuthenticationUrl;
         $this->oauthServer = $oauthServer;
         $this->template = $template;
+        $this->userData = [];
     }
 
     /**
@@ -139,6 +140,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
             'redirectUri' => $client->getRedirectUri()[0],
             'client' => $client,
             'scopes' => $this->getValidRequestedScopes($client, $authorizationRequest->getScopes()),
+            'user' => $this->userData,
         ];
 
         try {
@@ -196,13 +198,13 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
             return false;
         }
 
-        $this->userId = $json['id'];
+        $this->userData = $json;
 
         return true;
     }
 
     private function getUserIdentifier()
     {
-        return $this->userId;
+        return $this->userData['id'];
     }
 }
