@@ -122,7 +122,7 @@
     </hgroup>
     <form method="POST">
       <div class="desc">
-        {{ applicationName }} wants to access your <strong>thibault</strong> account
+        {{ applicationName }} wants to access your <strong>{{ user.username }}</strong> account
       </div>
       <button type="submit" name="authorize" class="button buttonBlue">Authorize {{ applicationName }}</button>
       <div class="redirect">
