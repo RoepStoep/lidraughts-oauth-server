@@ -64,6 +64,7 @@ final class AccessToken implements AccessTokenRepositoryInterface, ExpirableToke
             'access_token_id' => $accessTokenEntity->getIdentifier(),
             'client_id' => $accessTokenEntity->getClient()->getIdentifier(),
             'user_id' => $accessTokenEntity->getUserIdentifier(),
+            'create_date' => new UTCDateTime(),
             'expire_date' => new UTCDateTime($accessTokenEntity->getExpiryDateTime()->getTimestamp() * 1000),
             'scopes' => $scopes,
         ];
