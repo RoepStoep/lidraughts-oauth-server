@@ -18,17 +18,21 @@
 
       hgroup {
         text-align:center;
-        margin-top: 3em;
+        margin-top: 2em;
       }
 
       hgroup .logo {
-        width: 200px;
-        height: 200px;
+        width: 160px;
+        height: 160px;
+      }
+
+      hgroup h1 {
+        font-size: 1.5em;
       }
 
       form {
         width: 500px;
-        margin: 4em auto 2em auto;
+        margin: 2em auto;
         padding: 3em 2em 2em 2em;
         background: #fafafa;
         border: 1px solid #ebebeb;
@@ -36,13 +40,12 @@
         box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
       }
 
-      .desc {
-        margin-bottom: 3em;
+      .scopes h2 {
+        font-size: 1em;
       }
 
-      .redirect {
-        text-align: center;
-        margin-top: 1em;
+      .desc {
+        margin-bottom: 3em;
       }
 
       /* Button */
@@ -51,7 +54,7 @@
         position: relative;
         display: inline-block;
         padding: 12px 24px;
-        margin: .3em 0 1em 0;
+        margin: 2em 0 1em 0;
         width: 100%;
         vertical-align: middle;
         color: #fff;
@@ -122,13 +125,17 @@
     </hgroup>
     <form method="POST">
       <div class="desc">
-        {{ applicationName }} wants to access your <strong>{{ user.username }}</strong> account
+        {{ applicationName }} wants to access your <strong>{{ user.username }}</strong> account.
+      </div>
+      <div class="scopes">
+      <h2>Review permissions</h2>
+      <ul>
+        {% for scope in scopes %}
+            <li>{{ scope }}</li>
+        {% endfor %}
+      </ul>
       </div>
       <button type="submit" name="authorize" class="button buttonBlue">Authorize {{ applicationName }}</button>
-      <div class="redirect">
-        Authorizing will redirect to<br />
-        <strong>{{ redirectUri }}</strong>
-      </div>
     </form>
     <footer>
       {{ applicationName }} is <strong>not</strong> owned or operated by <a href="https://lichess.org">lichess.org</a>

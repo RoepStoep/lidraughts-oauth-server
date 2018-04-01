@@ -63,6 +63,13 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
      */
     private $userData;
 
+
+    private $scopeNames = [
+        'game:read' => 'Download all games',
+        'preference:read' => 'Read preferences',
+        'preference:write' => 'Write preferences'
+    ];
+
     /**
      * Initializes a new instance of this class.
      *
@@ -141,7 +148,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
             'applicationName' => $client->getName(),
             'redirectUri' => $client->getRedirectUri()[0],
             'client' => $client,
-            'scopes' => $this->getValidRequestedScopes($client, $authorizationRequest->getScopes()),
+            'scopes' => $this->getScopeNames($this->getValidRequestedScopes($client, $authorizationRequest->getScopes())),
             'user' => $this->userData,
         ];
 
@@ -166,6 +173,12 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
         }
 
         return $result;
+    }
+
+    function getScopeNames(array $scopes) {
+        return array_map(function($scope) {
+            return isset($this->scopeNames[$scope]) ? $this->scopeNames[$scope] : $scope;
+        }, $scopes);
     }
 
     /**
