@@ -118,7 +118,7 @@ final class AuthCode implements AuthCodeRepositoryInterface, ExpirableTokensInte
     {
         $this->collection->deleteMany([
             'expire_date' => [
-                '$lte' => new UTCDateTime(),
+                '$lte' => new UTCDateTime(round(microtime(true) * 1000)),
             ],
         ]);
     }

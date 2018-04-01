@@ -64,7 +64,7 @@ final class AccessToken implements AccessTokenRepositoryInterface, ExpirableToke
             'access_token_id' => $accessTokenEntity->getIdentifier(),
             'client_id' => $accessTokenEntity->getClient()->getIdentifier(),
             'user_id' => $accessTokenEntity->getUserIdentifier(),
-            'create_date' => new UTCDateTime(),
+            'create_date' => new UTCDateTime(round(microtime(true) * 1000)),
             'expire_date' => new UTCDateTime($accessTokenEntity->getExpiryDateTime()->getTimestamp() * 1000),
             'scopes' => $scopes,
         ];
@@ -124,7 +124,7 @@ final class AccessToken implements AccessTokenRepositoryInterface, ExpirableToke
     {
         $this->collection->deleteMany([
             'expire_date' => [
-                '$lte' => new UTCDateTime(),
+                '$lte' => new UTCDateTime(round(microtime(true) * 1000)),
             ],
         ]);
     }
