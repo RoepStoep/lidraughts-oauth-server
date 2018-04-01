@@ -19,13 +19,6 @@ final class Client implements ClientEntityInterface
     protected $secret;
 
     /**
-     * A list with scopes that are allowed for this client.
-     *
-     * @var array
-     */
-    protected $scopes;
-
-    /**
      * Initializes a new instance of this class.
      *
      * @param string $identifier
@@ -39,7 +32,6 @@ final class Client implements ClientEntityInterface
         $this->secret = $secret;
         $this->name = $name;
         $this->redirectUri = $redirectUri;
-        $this->scopes = [];
     }
 
     /**
@@ -48,23 +40,5 @@ final class Client implements ClientEntityInterface
     public function getClientSecret()
     {
         return $this->secret;
-    }
-
-    /**
-     * Allow the given scope for this client.
-     *
-     * @param string $scope The scope to allow.
-     */
-    public function allowScope(string $scope)
-    {
-        $this->scopes[] = $scope;
-    }
-
-    /**
-     * @return array
-     */
-    public function getScopes()
-    {
-        return $this->scopes;
     }
 }

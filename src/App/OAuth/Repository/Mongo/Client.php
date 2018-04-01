@@ -60,10 +60,6 @@ final class Client implements ClientRepositoryInterface, ClientCreatorInterface
             $data['redirect_uri']->getArrayCopy()
         );
 
-        foreach ($data['scopes'] as $scope) {
-            $client->allowScope($scope);
-        }
-
         return $client;
     }
 
@@ -81,8 +77,7 @@ final class Client implements ClientRepositoryInterface, ClientCreatorInterface
             'client_id' => $client->getIdentifier(),
             'client_secret' => $client->getClientSecret(),
             'name' => $client->getName(),
-            'redirect_uri' => $client->getRedirectUri(),
-            'scopes' => $client->getScopes(),
+            'redirect_uri' => $client->getRedirectUri()
         ];
 
         $this->collection->insertOne($data);

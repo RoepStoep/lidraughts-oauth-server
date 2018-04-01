@@ -148,7 +148,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
             'applicationName' => $client->getName(),
             'redirectUri' => $client->getRedirectUri()[0],
             'client' => $client,
-            'scopes' => $this->getScopeNames($this->getValidRequestedScopes($client, $authorizationRequest->getScopes())),
+            'scopes' => $this->getScopeNames($authorizationRequest->getScopes()),
             'user' => $this->userData,
         ];
 
@@ -159,20 +159,6 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
         }
 
         return new HtmlResponse($html);
-    }
-
-    public function getValidRequestedScopes(Client $client, array $scopes)
-    {
-        $result = [];
-
-        /** @var ScopeEntityInterface $scope */
-        foreach ($scopes as $scope) {
-            if (in_array($scope->getIdentifier(), $client->getScopes())) {
-                $result[] = $scope->getIdentifier();
-            }
-        }
-
-        return $result;
     }
 
     function getScopeNames(array $scopes) {
