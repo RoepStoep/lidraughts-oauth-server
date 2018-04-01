@@ -38,16 +38,6 @@ final class Scope implements ScopeRepositoryInterface
         ClientEntityInterface $clientEntity,
         $userIdentifier = null
     ) {
-        /**
-         * @var int $index
-         * @var ScopeEntityInterface $scope
-         */
-        foreach ($scopes as $index => $scope) {
-            if (!in_array($scope->getIdentifier(), $clientEntity->getScopes())) {
-                unset($scopes[$index]);
-            }
-        }
-
         return $scopes;
     }
 }

@@ -163,7 +163,8 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
 
     function getScopeNames(array $scopes) {
         return array_map(function($scope) {
-            return isset($this->scopeNames[$scope]) ? $this->scopeNames[$scope] : $scope;
+            $id = $scope->getIdentifier();
+            return isset($this->scopeNames[$id]) ? $this->scopeNames[$id] : $id;
         }, $scopes);
     }
 
