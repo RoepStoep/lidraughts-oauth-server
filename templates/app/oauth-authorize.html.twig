@@ -132,6 +132,8 @@
       <ul>
         {% for scope in scopes %}
             <li>{{ scope }}</li>
+        {% else %}
+          <li>Only public profile</li>
         {% endfor %}
       </ul>
       </div>
