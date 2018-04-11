@@ -67,7 +67,8 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
     private $scopeNames = [
         'game:read' => 'Download all games',
         'preference:read' => 'Read preferences',
-        'preference:write' => 'Write preferences'
+        'preference:write' => 'Write preferences',
+        'email:read' => 'Read email address'
     ];
 
     /**
