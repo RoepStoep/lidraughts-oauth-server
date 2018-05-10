@@ -69,6 +69,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
         'preference:read' => 'Read preferences',
         'preference:write' => 'Write preferences',
         'email:read' => 'Read email address',
+        'tournament:write' => 'Create tournaments',
         'bot:play' => 'Play bot moves'
     ];
 
