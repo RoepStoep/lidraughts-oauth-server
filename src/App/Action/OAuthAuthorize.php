@@ -71,7 +71,9 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
         'challenge:read' => 'Read incoming challenges',
         'challenge:write' => 'Create, accept, decline challenges',
         'tournament:write' => 'Create tournaments',
-        'bot:play' => 'Play as a bot'
+        'bot:play' => 'Play as a bot',
+        // deprecated
+        'game:read' => 'Download all games'
     ];
 
     /**
