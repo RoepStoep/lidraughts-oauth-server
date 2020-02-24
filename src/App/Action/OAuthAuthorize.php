@@ -75,7 +75,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
         'tournament:write' => 'Create tournaments',
         'team:write' => 'Join, leave, and manage teams',
         'msg:write' => 'Send private messages to other players',
-        'bot:play' => 'Play as a bot',
+        'bot:play' => 'Play games with the bot API',
         // deprecated
         'game:read' => 'Download all games'
     ];
