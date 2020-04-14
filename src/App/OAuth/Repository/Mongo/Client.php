@@ -39,7 +39,7 @@ final class Client implements ClientRepositoryInterface, ClientCreatorInterface
      * @throws \MongoDB\Exception\InvalidArgumentException
      * @throws \MongoDB\Driver\Exception\RuntimeException
      */
-    public function getClientEntity($clientIdentifier, $grantType, $clientSecret = null, $mustValidateSecret = true)
+    public function getClientEntity($clientIdentifier, $grantType = null, $clientSecret = null, $mustValidateSecret = true)
     {
         $data = $this->collection->findOne([
             'client_id' => $clientIdentifier,
