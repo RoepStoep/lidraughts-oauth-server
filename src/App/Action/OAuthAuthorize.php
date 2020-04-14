@@ -7,17 +7,17 @@ use App\OAuth\Entity\User;
 use Exception;
 use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\RedirectResponse;
+use Laminas\Diactoros\Stream;
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Entities\ScopeEntityInterface;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\RequestTypes\AuthorizationRequest;
+use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Twig_Error_Loader;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Diactoros\Response\RedirectResponse;
-use Zend\Diactoros\Stream;
-use Zend\Expressive\Template\TemplateRendererInterface;
 
 final class OAuthAuthorize implements ServerMiddlewareInterface
 {
@@ -181,7 +181,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
     /**
      * @param ServerRequestInterface $request
      * @return bool
-     * @throws \Zend\Http\Exception\InvalidArgumentException
+     * @throws \Laminas\Http\Exception\InvalidArgumentException
      */
     private function isAuthenticated(ServerRequestInterface $request)
     {
@@ -191,7 +191,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
             return false;
         }
 
-        $httpClient = new \Zend\Http\Client($this->checkAuthenticationUrl, [
+        $httpClient = new \Laminas\Http\Client($this->checkAuthenticationUrl, [
             'encodecookies' => false,
         ]);
         $httpClient->setHeaders([
