@@ -21,9 +21,9 @@ return [
     'grant_enabled_refresh_token' => true,
 
     // Based on https://en.wikipedia.org/wiki/ISO_8601#Durations
-    'ttl_access_token' => 'PT12H',
+    'ttl_access_token' => 'P20Y',
     'ttl_auth_code' => 'PT10M',
-    'ttl_refresh_token' => 'P1Y',
+    'ttl_refresh_token' => 'P20Y',
 
     'pdo' => [
         'dsn' => '',
