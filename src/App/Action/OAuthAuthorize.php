@@ -78,6 +78,7 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
         'bot:play' => 'Play games with the bot API',
         'board:play' => 'Play games with the board API',
         'puzzle:read' => 'Read puzzle activity',
+        'web:login' => 'Create authenticated website sessions',
         // deprecated
         'game:read' => 'Download all games'
     ];
