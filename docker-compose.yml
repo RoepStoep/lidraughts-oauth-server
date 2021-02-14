@@ -39,7 +39,7 @@ services:
 
   webserver-apache:
     image: chesszebra/php:7.2-apache
-    container_name: "oauth.lichess.org"
+    container_name: "oauth.lidraughts.org"
     volumes:
       - .:/var/www/html
     links:

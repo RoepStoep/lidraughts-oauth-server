@@ -4,7 +4,7 @@ $clientId = '0646c401d36a3ea2bdf1b2e4625fca47139e37813c9ccefc426b65ec7cfa8aff4d1
 $clientSecret = 'chesszebra';
 
 if (empty($_GET['code']) && empty($_GET['error'])) {
-    header('Location: http://oauth.lichess.org.docker/oauth/authorize?state=12345&response_type=code&client_id=' . $clientId . '&scope=test%20test2%20read%20write');
+    header('Location: http://oauth.lidraughts.org.docker/oauth/authorize?state=12345&response_type=code&client_id=' . $clientId . '&scope=test%20test2%20read%20write');
     exit;
 }
 
@@ -26,7 +26,7 @@ if ($clientSecret) {
 }
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://oauth.lichess.org/oauth');
+curl_setopt($ch, CURLOPT_URL, 'http://oauth.lidraughts.org/oauth');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postFields));

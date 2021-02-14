@@ -1,7 +1,7 @@
-# lichess-oauth-server
+# lidraughts-oauth-server
 
 An OAuth server application that handles incoming OAuth requests 
-for Lichess.
+for Lidraughts.
 
 ## Installation
 
@@ -10,7 +10,7 @@ All commands are meant to be ran from the root of your project directory.
 Clone the repository to your favourite destination path.
 
 ```
-git clone https://github.com/chesszebra/lichess-oauth-server.git
+git clone https://github.com/roepstoep/lidraughts-oauth-server.git
 ```
 
 From here choose your preferred way of working.

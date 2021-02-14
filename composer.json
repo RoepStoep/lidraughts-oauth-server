@@ -1,8 +1,8 @@
 {
-    "name": "chesszebra/lichess-oauth-server",
+    "name": "roepstoep/lidraughts-oauth-server",
     "description": "An application that acts as an OAuth authorization server.",
     "type": "project",
-    "homepage": "https://github.com/chesszebra/lichess-oauth-server",
+    "homepage": "https://github.com/roepstoep/lidraughts-oauth-server",
     "license": "AGPL3",
     "config": {
         "optimize-autoloader": true,

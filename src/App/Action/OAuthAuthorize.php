@@ -70,17 +70,10 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
         'email:read' => 'Read email address',
         'challenge:read' => 'Read incoming challenges',
         'challenge:write' => 'Create, accept, decline challenges',
-        'study:read' => 'Read private studies and broadcasts',
-        'study:write' => 'Create, update, delete studies and broadcasts',
         'tournament:write' => 'Create tournaments',
         'team:write' => 'Join, leave, and manage teams',
-        'msg:write' => 'Send private messages to other players',
         'bot:play' => 'Play games with the bot API',
-        'board:play' => 'Play games with the board API',
-        'puzzle:read' => 'Read puzzle activity',
-        'web:login' => 'Create authenticated website sessions',
-        // deprecated
-        'game:read' => 'Download all games'
+        'puzzle:read' => 'Read puzzle activity'
     ];
 
     /**
@@ -198,8 +191,8 @@ final class OAuthAuthorize implements ServerMiddlewareInterface
             'encodecookies' => false,
         ]);
         $httpClient->setHeaders([
-            'Accept' => 'application/vnd.lichess.v3+json',
-            'User-Agent' => 'chesszebra/lichess-oauth-server',
+            'Accept' => 'application/vnd.lidraughts.v3+json',
+            'User-Agent' => 'roepstoep/lidraughts-oauth-server',
         ]);
         $httpClient->setCookies([
             $this->authenticationCookie => $cookies[$this->authenticationCookie],
