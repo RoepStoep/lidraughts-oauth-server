@@ -11,7 +11,7 @@ use PDO;
 
 return [
     'authenticate_url' => 'https://lidraughts.org/login?referrer=%s',
-    'authenticate_cookie' => 'lila2',
+    'authenticate_cookie' => 'lidraughts2',
     'check_authentication_url' => 'https://lidraughts.org/account/info',
     'private_key_path' => __DIR__ . '/../../data/private.key',
     'encryption_key' => '',
@@ -49,11 +49,11 @@ return [
 
     'dependencies' => [
         'factories' => [
-            AuthCodeRepositoryInterface::class => OAuth\Repository\Pdo\Factory\AuthCodeFactory::class,
-            AccessTokenRepositoryInterface::class => OAuth\Repository\Pdo\Factory\AccessTokenFactory::class,
-            ClientRepositoryInterface::class => OAuth\Repository\Pdo\Factory\ClientFactory::class,
-            RefreshTokenRepositoryInterface::class => OAuth\Repository\Pdo\Factory\RefreshTokenFactory::class,
-            ScopeRepositoryInterface::class => OAuth\Repository\Pdo\Factory\ScopeFactory::class,
+            AuthCodeRepositoryInterface::class => OAuth\Repository\Mongo\Factory\AuthCodeFactory::class,
+            AccessTokenRepositoryInterface::class => OAuth\Repository\Mongo\Factory\AccessTokenFactory::class,
+            ClientRepositoryInterface::class => OAuth\Repository\Mongo\Factory\ClientFactory::class,
+            RefreshTokenRepositoryInterface::class => OAuth\Repository\Mongo\Factory\RefreshTokenFactory::class,
+            ScopeRepositoryInterface::class => OAuth\Repository\Mongo\Factory\ScopeFactory::class,
         ],
     ],
 ];
